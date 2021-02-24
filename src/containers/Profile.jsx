@@ -30,14 +30,14 @@ export default class Profile extends Component {
         return (
             <div className="profile-container">
                 <img className="profile-avatar" src={data.avatar_url} />
-                <ul></ul>
-                <li>GitHub: {data.html_url}</li>
-                <li>Repos Url: {data.repos_url}</li>
-                <li>Name: {data.name}</li>
-                <li>Company: {data.company}</li>
-                <li>Location: {data.location}</li>
-                <li>Email: {data.email}</li>
-                <li>Bio: {data.bio}</li>
+                <ul>
+                    <li>GitHub: {data.html_url}</li>
+                    <li>Repos Url: {data.repos_url}</li>
+                    <li>Name: {data.name}</li>
+                    <li>Company: {data.company}</li>
+                    <li>Location: {data.location}</li>
+                    <li>Email: {data.email}</li>
+                    <li>Bio: {data.bio}</li>
 
                 </ul>
             </div >)
