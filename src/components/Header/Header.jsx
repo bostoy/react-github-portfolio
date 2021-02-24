@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './Header.css'
-import Link from '../Link/Link'
 import logo from '../../Logos/GitHub-Mark-Light-64px.png'
 
 export default class Header extends Component {
