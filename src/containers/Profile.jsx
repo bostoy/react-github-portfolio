@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import './Profile.css'
 
 const ghUsername = 'bostoy'
@@ -23,7 +23,24 @@ export default class Profile extends Component {
         }
     }
     render() {
-        return (<div></div>)
+        const { data, isLoading } = this.state
+        if (isLoading) {
+            return <div className="loading-div">Loading...</div>
+        }
+        return (
+            <Fragment>
+                <ul>
+                    <li>Avatar Url: {data.avatar_url}</li>
+                    <li>HTML Url: {data.html_url}</li>
+                    <li>Repos Url: {data.repos_url}</li>
+                    <li>Name: {data.name}</li>
+                    <li>Company: {data.company}</li>
+                    <li>Location: {data.location}</li>
+                    <li>Email: {data.email}</li>
+                    <li>Bio: {data.bio}</li>
+
+                </ul>
+            </Fragment>)
     }
 }
 
