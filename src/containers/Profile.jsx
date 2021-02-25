@@ -52,11 +52,11 @@ export default class Profile extends Component {
         }
     }
     render() {
-        const { data, isLoading, repositories } = this.state
+        const { data, isLoading, repositories, error } = this.state
 
-        if (isLoading) {
+        if (isLoading || error) {
             //todo add spinner
-            return <LoadingWrapper>Loading...</LoadingWrapper>
+            return <LoadingWrapper>{isLoading ? 'Loading...' : error}</LoadingWrapper>
         }
 
         const items = [
