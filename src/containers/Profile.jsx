@@ -21,22 +21,38 @@ export default class Profile extends Component {
         super()
         this.state = {
             data: {},
+            repositories: [],
             isLoading: true,
         }
     }
     async componentDidMount() {
-        const profileData = await fetch(`https://api.github.com/users/${ghUsername}`)
-        const profileDataJSON = await profileData.json()
 
-        if (profileDataJSON) {
+        try {
+            const profileData = await fetch(`https://api.github.com/users/${ghUsername}`)
+            const profileDataJSON = await profileData.json()
+
+            if (profileDataJSON) {
+                const repositories = await fetch(profileDataJSON.repos_url)
+                const repoDataJSON = await repositories.json()
+
+                this.setState({
+                    data: profileDataJSON,
+                    repositories: repoDataJSON,
+                    isLoading: false,
+                    error: ''
+                })
+            }
+        }
+        catch (error) {
             this.setState({
-                data: profileDataJSON,
                 isLoading: false,
+                error: error.message
             })
+
         }
     }
     render() {
-        const { data, isLoading } = this.state
+        const { data, isLoading, repositories } = this.state
 
         if (isLoading) {
             //todo add spinner
@@ -49,14 +65,20 @@ export default class Profile extends Component {
             { label: 'Company', value: data.company },
             { label: 'Email', value: data.email || 'bostoycontact@gmail.com' },
             { label: 'GitHub Account', value: data.html_url },
-            { label: 'Repos Url', value: data.repos_url },
             { label: 'Bio', value: data.bio },
         ]
+
+        const projects = repositories.map(repo => ({
+            label: repo.name,
+            value: repo.html_url
+            //todo make value link  with url and title='GitHub URL' props
+        }))
 
         return (
             <ProfileContainer>
                 <ProfileAvatar src={data.avatar_url} alt="profile picture" />
-                <List items={items} />
+                <List title="Profile" items={items} />
+                <List title="Projects" items={projects} />
             </ProfileContainer>)
     }
 }

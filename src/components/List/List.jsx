@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 const ListWrapper = styled.ul`
@@ -10,13 +10,22 @@ const ListItem = styled.li`
 display:flex;
 justify-content: space-between;
 `
-export default function List({ items }) {
-    console.log(items)
-    return <ListWrapper>
-        {items.map(item => {
-            return (<ListItem key={item.label}>
-                <strong>{item.label}</strong>{item.value}
-            </ListItem>)
-        })}
-    </ListWrapper>
+const Title = styled.h2`
+padding:10px 0;
+border-bottom:1px solid lightGrey;
+`
+export default function List({ items, title }) {
+
+    return (
+        <Fragment>
+            <Title>{title}</Title>
+            <ListWrapper>
+                {items.map(item =>
+                    <ListItem key={item.label}>
+                        <label>{item.label}</label>{item.value}
+                    </ListItem>
+                )}
+            </ListWrapper>
+        </Fragment>
+    )
 }
