@@ -64,13 +64,13 @@ export default class Profile extends Component {
             { label: 'Location', value: data.location },
             { label: 'Company', value: data.company },
             { label: 'Email', value: data.email || 'bostoycontact@gmail.com' },
-            { label: 'GitHub Account', value: data.html_url },
+            { label: 'GitHub Account', value: <Link url={data.html_url} title="GitHub URL" /> },
             { label: 'Bio', value: data.bio },
         ]
 
         const projects = repositories.map(repo => ({
             label: repo.name,
-            value: repo.html_url
+            value: <Link url={repo.html_url} title="GitHub URL" />
             //todo make value link  with url and title='GitHub URL' props
         }))
 

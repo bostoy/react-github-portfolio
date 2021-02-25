@@ -13,7 +13,7 @@ export default class Link extends Component {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                {this.props.label}
+                {this.props.title}
             </InnerLink>
         )
     }
