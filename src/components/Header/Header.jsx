@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import logo from '../../Logos/GitHub-Mark-Light-64px.png'
+import logo from '../../GitHub-Mark-Light-64px.png'
 
 const HeaderWrapper = styled.div`
  background-color: #282c34;
@@ -13,6 +13,7 @@ const HeaderWrapper = styled.div`
   color: white;
 `
 const Logo = styled.img`
+padding:10px;
  height: 64px;
   pointer-events: none;
 `
