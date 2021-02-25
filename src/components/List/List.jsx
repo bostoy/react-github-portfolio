@@ -1,12 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const ListWrapper = styled.ul`
+list-style = none;
+text-align:left;
+padding: 0;
+`
+const ListItem = styled.li`
+display:flex;
+justify-content: space-between;
+`
 export default function List({ items }) {
     console.log(items)
-    return <ul>
+    return <ListWrapper>
         {items.map(item => {
-            return (<li key={item.label}>
+            return (<ListItem key={item.label}>
                 <strong>{item.label}</strong>{item.value}
-            </li>)
+            </ListItem>)
         })}
-    </ul>
+    </ListWrapper>
 }

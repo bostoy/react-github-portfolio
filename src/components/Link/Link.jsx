@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import './Link.css'
+import styled from 'styled-components'
+
+const InnerLink = styled.a`
+color: #61dafb;
+`
 
 export default class Link extends Component {
     render() {
         return (
-            <a
-                className="App-link"
+            <InnerLink
                 href={this.props.url}
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                {this.props.title}
-            </a>
+                {this.props.label}
+            </InnerLink>
         )
     }
 }
